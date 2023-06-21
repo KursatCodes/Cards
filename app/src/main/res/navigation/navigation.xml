@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/enterFragment">
+
+    <fragment
+        android:id="@+id/enterFragment"
+        android:name="com.muhammedkursatgokgun.cards.view.EnterFragment"
+        android:label="fragment_enter"
+        tools:layout="@layout/fragment_enter" >
+        <action
+            android:id="@+id/action_enterFragment_to_wordFragment"
+            app:destination="@id/wordFragment" />
+        <action
+            android:id="@+id/action_enterFragment_to_adderFragment"
+            app:destination="@id/adderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordFragment"
+        android:name="com.muhammedkursatgokgun.cards.view.WordFragment"
+        android:label="fragment_word"
+        tools:layout="@layout/fragment_word" >
+        <action
+            android:id="@+id/action_wordFragment_to_adderFragment"
+            app:destination="@id/adderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adderFragment"
+        android:name="com.muhammedkursatgokgun.cards.view.AdderFragment"
+        android:label="fragment_adder"
+        tools:layout="@layout/fragment_adder" >
+        <action
+            android:id="@+id/action_adderFragment_to_wordFragment"
+            app:destination="@id/wordFragment" />
+    </fragment>
+</navigation>
