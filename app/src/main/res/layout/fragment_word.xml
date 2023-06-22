@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/textviewWord"
         android:layout_width="match_parent"
-        android:layout_height="536dp"
+        android:layout_height="517dp"
         android:gravity="center"
         android:text="Burda bir word olacak"
         android:textSize="25sp" />
@@ -20,29 +20,30 @@
 
     <LinearLayout
         android:id="@+id/lineeer"
-        tools:context=".view.WordFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="69dp"
+        android:orientation="horizontal"
+        tools:context=".view.WordFragment">
 
         <Button
             android:id="@+id/buttonBack"
             android:layout_width="210dp"
-            android:layout_height="match_parent"
-            android:text="back"
-            android:textSize="21sp"
-            android:backgroundTint="@color/green"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_margin="1dp"
-            />
+            android:backgroundTint="@color/green"
+            android:text="back"
+            android:textSize="21sp" />
 
         <Button
             android:id="@+id/buttonNext"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="1dp"
             android:backgroundTint="@color/green"
             android:text="next"
             android:textSize="21sp"
-            android:layout_margin="1dp"
 
             />
     </LinearLayout>

@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.AdderFragment"
     android:orientation="vertical">
-
-    <!-- TODO: Update blank fragment layout -->
     <EditText
         android:id="@+id/editTextEnglishWord"
         android:layout_width="match_parent"
@@ -22,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="selam"
         android:textSize="25sp"
+        android:layout_marginTop="25dp"
         />
     <Button
         android:layout_gravity="center"
@@ -31,14 +30,14 @@
         android:text="add word"
         android:textSize="25sp"
         android:backgroundTint="@color/green"
+        android:layout_marginTop="25dp"
         />
-
     <TextView
         android:id="@+id/textviewCase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="Burda kelime nasıl o olacak" 
+        android:text=" "
+        android:layout_marginTop="25dp"
         />
-
 </LinearLayout>
