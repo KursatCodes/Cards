@@ -35,5 +35,13 @@ class EnterFragment : Fragment() {
             val action = EnterFragmentDirections.actionEnterFragmentToWordFragment()
             Navigation.findNavController(it).navigate(action)
         }
+        binding.buttonAdd.setOnClickListener {
+            val action = EnterFragmentDirections.actionEnterFragmentToAdderFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
