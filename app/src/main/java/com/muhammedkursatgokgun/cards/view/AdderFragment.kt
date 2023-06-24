@@ -45,26 +45,35 @@ class AdderFragment : Fragment() {
         val wordDao = db.wordDao()
 
         binding.buttonAddWord.setOnClickListener {
+            println("selam 1")
             val englishW = binding.editTextEnglishWord.text.toString()
             val turkW = binding.editTextTurkishWord.text.toString()
+            println("selam 2")
             if(englishW.isNotEmpty() && turkW.isNotEmpty()){
+                println("selam 3")
                 val newWord = Word(englishW, turkW)
+                println("selam 4")
                 myDisposable.add(wordDao.insert(newWord)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::handleResponse)
                 )
+                println("selam 5")
             }else{
                 Toast.makeText(requireContext(),"Enter Turkish and English word mean.",Toast.LENGTH_LONG).show()
+                println("selam 6")
             }
-
-            val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
-            Navigation.findNavController(it).navigate(action)
+            println("selam 7")
+            //val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
+            //Navigation.findNavController(it).navigate(action)
+            println("selam 8")
         }
     }
     private fun handleResponse(){
+        println("selam response")
         val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
         Navigation.findNavController(requireView()).navigate(action)
+        println("güle güle response")
     }
     override fun onDestroyView() {
         super.onDestroyView()

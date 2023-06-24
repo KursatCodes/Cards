@@ -34,5 +34,8 @@
         <action
             android:id="@+id/action_adderFragment_to_wordFragment"
             app:destination="@id/wordFragment" />
+        <action
+            android:id="@+id/action_adderFragment_to_enterFragment"
+            app:destination="@id/enterFragment" />
     </fragment>
 </navigation>
