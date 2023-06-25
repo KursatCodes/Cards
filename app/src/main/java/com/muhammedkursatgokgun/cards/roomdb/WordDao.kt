@@ -15,5 +15,5 @@ interface WordDao {
     @Insert
     fun insert(word: Word):Completable
     @Delete
-    fun delete(word: Word)
+    fun delete(word: Word): Completable
 }

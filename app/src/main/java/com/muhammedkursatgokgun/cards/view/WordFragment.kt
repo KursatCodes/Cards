@@ -10,6 +10,7 @@ import com.muhammedkursatgokgun.cards.R
 import com.muhammedkursatgokgun.cards.databinding.FragmentEnterBinding
 import com.muhammedkursatgokgun.cards.databinding.FragmentWordBinding
 import com.muhammedkursatgokgun.cards.model.Word
+import com.muhammedkursatgokgun.cards.roomdb.WordDao
 import com.muhammedkursatgokgun.cards.roomdb.WordDb
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -17,6 +18,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 private var myDisposable= CompositeDisposable()
 private lateinit var wordListFromDB : List<Word>
+private lateinit var wordDao : WordDao
 
 
 private var _binding: FragmentWordBinding? = null
@@ -44,8 +46,8 @@ class WordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var db = Room.databaseBuilder(
             requireContext(), WordDb::class.java,"Word"
-        ).build()
-        val wordDao = db.wordDao()
+        ).allowMainThreadQueries().build()
+        wordDao = db.wordDao()
 
         myDisposable.add(wordDao.getAll()
             .subscribeOn(Schedulers.io())
@@ -54,41 +56,65 @@ class WordFragment : Fragment() {
         )
         binding.buttonNext.setOnClickListener {
             showingWordId+=1
-            if(showingWordId<wordListFromDB.size){
-                binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW)
+            if(wordListFromDB.size>0){
+                if(showingWordId<wordListFromDB.size){
+                    var showThis =(showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+                    binding.textviewWord.text = showThis
+                }else{
+                    showingWordId=0
+                    var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
+                    binding.textviewWord.text = showThis
+                }
             }else{
-                showingWordId=0
-                binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW)
-
+                binding.textviewWord.text = "null"
             }
 
         }
+
         binding.buttonBack.setOnClickListener {
             showingWordId-=1
             if(showingWordId>-1) {
-                binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW)
+                var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+                    binding.textviewWord.text= showThis
             }
         }
+        binding.buttonDelete.setOnClickListener {
+            myDisposable.add(wordDao.delete(wordListFromDB[showingWordId-1])
+                .observeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+            )
+        }
+
         binding.textviewWord.setOnClickListener {
-            if(binding.textviewWord.text.equals(wordListFromDB[showingWordId].englishW)){
-                binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].turkW)
+            if(binding.textviewWord.text.equals((showingWordId+1).toString() + "- "+wordListFromDB[showingWordId].englishW)){
+                var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].turkW
+                    binding.textviewWord.text = showThis
             }else{
-                binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW)
+                var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+                binding.textviewWord.text = showThis
             }
         }
+    }
+    private fun handleResponseForDelete() {
+        myDisposable.add(wordDao.getAll()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(this::handleResponse))
     }
     private fun handleResponse(wordList: List<Word>){
         wordListFromDB = wordList
         if(wordListFromDB[0].englishW.isNotEmpty()){
-            binding.textviewWord.setText((showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW)
+            var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
+                binding.textviewWord.text = showThis
+        }else{
+            binding.textviewWord.text = "null"
         }
-
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
         myDisposable.clear()
     }
-
 }
 

@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/textviewWord"
         android:layout_width="match_parent"
-        android:layout_height="517dp"
+        android:layout_height="482dp"
         android:gravity="center"
         android:text="Burda bir word olacak"
         android:textSize="25sp" />
@@ -21,7 +21,7 @@
     <LinearLayout
         android:id="@+id/lineeer"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:context=".view.WordFragment">
 
@@ -43,9 +43,25 @@
             android:layout_margin="1dp"
             android:backgroundTint="@color/green"
             android:text="next"
-            android:textSize="21sp"
+            android:textSize="21sp" />
+    </LinearLayout>
 
-            />
+    <LinearLayout
+        android:id="@+id/lineer2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="178dp"
+            android:layout_height="62dp"
+            android:foregroundGravity="center"
+            android:layout_margin="1dp"
+            android:backgroundTint="@color/green"
+            android:gravity="center"
+            android:text="delete"
+            android:textSize="21sp" />
     </LinearLayout>
 
 </LinearLayout>
