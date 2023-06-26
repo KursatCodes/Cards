@@ -76,7 +76,6 @@ class WordFragment : Fragment() {
                 }
             }
         }
-
         binding.buttonBack.setOnClickListener {
             if(wordListFromDB.isNotEmpty()){
                 if(showingWordId>0) {
@@ -102,7 +101,23 @@ class WordFragment : Fragment() {
             }
 
         }
+        binding.buttonGo.setOnClickListener {
+            if (wordListFromDB.isNotEmpty()){
+                if (binding.textviewList.text.isNotEmpty()){
+                    var goId=binding.textviewList.text.toString().toInt()
+                    if (goId < wordListFromDB.size && goId>0){
+                        var showThis = (goId).toString() + "- "+ wordListFromDB[goId-1].englishW
+                        binding.textviewWord.text = showThis
+                        binding.textviewList.text.clear()
+                    }else{
+                        var showThis = (wordListFromDB.size).toString() + "- "+ wordListFromDB[wordListFromDB.size-1].englishW
+                        binding.textviewWord.text = showThis
+                        binding.textviewList.text.clear()
+                    }
+                }
+            }
 
+        }
         binding.textviewWord.setOnClickListener {
             if(binding.textviewWord.text.equals((showingWordId+1).toString() + "- "+wordListFromDB[showingWordId].englishW)){
                 var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].turkW
@@ -125,7 +140,7 @@ class WordFragment : Fragment() {
             var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
                 binding.textviewWord.text = showThis
         }else{
-            binding.textviewWord.text = "Liste Boş"
+            binding.textviewWord.text = "Blank List."
         }
     }
     override fun onDestroyView() {
