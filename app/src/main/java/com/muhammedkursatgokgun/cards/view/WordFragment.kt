@@ -55,35 +55,52 @@ class WordFragment : Fragment() {
             .subscribe(this::handleResponse)
         )
         binding.buttonNext.setOnClickListener {
-            showingWordId+=1
-            if(wordListFromDB.size>0){
-                if(showingWordId<wordListFromDB.size){
+            println("selam 1")
+                println("selam 2")
+            if(wordListFromDB.isNotEmpty()){
+                if(showingWordId+1<wordListFromDB.size){
+                    println("selam 3")
+                    showingWordId+=1
+                    println("selam 4")
+                    println(showingWordId.toString())
                     var showThis =(showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+                    println("selam 5")
                     binding.textviewWord.text = showThis
+                    println("selam 6")
                 }else{
+                    println("selam 7")
                     showingWordId=0
                     var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
+                    println("selam 8")
                     binding.textviewWord.text = showThis
                 }
-            }else{
-                binding.textviewWord.text = "null"
             }
-
         }
 
         binding.buttonBack.setOnClickListener {
-            showingWordId-=1
-            if(showingWordId>-1) {
-                var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+            if(wordListFromDB.isNotEmpty()){
+                if(showingWordId>0) {
+                    showingWordId-=1
+                    var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
                     binding.textviewWord.text= showThis
+                }else{
+                    showingWordId= wordListFromDB.size-1
+                    var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
+                    binding.textviewWord.text= showThis
+
+                }
             }
+
         }
         binding.buttonDelete.setOnClickListener {
-            myDisposable.add(wordDao.delete(wordListFromDB[showingWordId-1])
-                .observeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-            )
+            if(wordListFromDB.isNotEmpty()){
+                myDisposable.add(wordDao.delete(wordListFromDB[showingWordId])
+                    .observeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponseForDelete)
+                )
+            }
+
         }
 
         binding.textviewWord.setOnClickListener {
@@ -104,11 +121,11 @@ class WordFragment : Fragment() {
     }
     private fun handleResponse(wordList: List<Word>){
         wordListFromDB = wordList
-        if(wordListFromDB[0].englishW.isNotEmpty()){
+        if(wordListFromDB.isNotEmpty()){
             var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
                 binding.textviewWord.text = showThis
         }else{
-            binding.textviewWord.text = "null"
+            binding.textviewWord.text = "Liste Boş"
         }
     }
     override fun onDestroyView() {
