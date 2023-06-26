@@ -67,6 +67,8 @@ class AdderFragment : Fragment() {
             //val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
             //Navigation.findNavController(it).navigate(action)
             println("selam 8")
+            binding.editTextEnglishWord.text.clear()
+            binding.editTextTurkishWord.text.clear()
         }
     }
     private fun handleResponse(){

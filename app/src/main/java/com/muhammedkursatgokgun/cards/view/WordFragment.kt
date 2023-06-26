@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.room.Room
 import com.muhammedkursatgokgun.cards.R
 import com.muhammedkursatgokgun.cards.databinding.FragmentEnterBinding
@@ -117,6 +118,10 @@ class WordFragment : Fragment() {
                 }
             }
 
+        }
+        binding.buttonForAddGo.setOnClickListener {
+            val action = WordFragmentDirections.actionWordFragmentToAdderFragment()
+            Navigation.findNavController(it).navigate(action)
         }
         binding.textviewWord.setOnClickListener {
             if(binding.textviewWord.text.equals((showingWordId+1).toString() + "- "+wordListFromDB[showingWordId].englishW)){

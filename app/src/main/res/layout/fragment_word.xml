@@ -77,32 +77,37 @@
             android:textSize="21sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/lineer2"
-        android:layout_width="160dp"
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/green"
+        android:foregroundGravity="left"
+        android:gravity="center"
+        android:text="delete"
+        android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/lineeer">
+        app:layout_constraintTop_toBottomOf="@+id/lineeer" />
 
-        <Button
-            android:id="@+id/buttonDelete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:backgroundTint="@color/green"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:text="delete"
-            android:textSize="21sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lineeer" />
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/buttonForAddGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/green"
+        android:foregroundGravity="right"
+        android:gravity="center"
+        android:text="add"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineeer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
