@@ -34,7 +34,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="#00BCD4"
         android:text="add word"
         android:textSize="25sp" />
     <TextView
