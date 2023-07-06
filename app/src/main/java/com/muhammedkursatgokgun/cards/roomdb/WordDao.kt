@@ -12,6 +12,8 @@ import io.reactivex.rxjava3.core.Flowable
 interface WordDao {
     @Query("SELECT * FROM Word")// Word ---> Entity sınıfı
     fun getAll(): Flowable<List<Word>>
+    @Query("SELECT * FROM Word WHERE englishW = :englishw")
+    fun getWithName(englishw: String): Flowable<Word>
     @Insert
     fun insert(word: Word):Completable
     @Delete

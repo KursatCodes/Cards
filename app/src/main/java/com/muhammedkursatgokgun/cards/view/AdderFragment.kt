@@ -12,6 +12,7 @@ import com.muhammedkursatgokgun.cards.R
 import com.muhammedkursatgokgun.cards.databinding.FragmentAdderBinding
 import com.muhammedkursatgokgun.cards.databinding.FragmentWordBinding
 import com.muhammedkursatgokgun.cards.model.Word
+import com.muhammedkursatgokgun.cards.roomdb.WordDao
 import com.muhammedkursatgokgun.cards.roomdb.WordDb
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -23,6 +24,8 @@ private var _binding: FragmentAdderBinding? = null
 // This property is only valid between onCreateView and
 // onDestroyView.
 private val binding get() = _binding!!
+private var repeatWord = true
+private var wordList = ArrayList<Word>()
 class AdderFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,40 +45,44 @@ class AdderFragment : Fragment() {
         var db = Room.databaseBuilder(
             requireContext(),WordDb::class.java,"Word"
         ).build()
-        val wordDao = db.wordDao()
+        var wordDao = db.wordDao()
 
         binding.buttonAddWord.setOnClickListener {
-            println("selam 1")
             val englishW = binding.editTextEnglishWord.text.toString()
             val turkW = binding.editTextTurkishWord.text.toString()
-            println("selam 2")
-            if(englishW.isNotEmpty() && turkW.isNotEmpty()){
-                println("selam 3")
-                val newWord = Word(englishW, turkW)
-                println("selam 4")
+            val newWord = Word(englishW, turkW)
+            var repeatWord= false
+            wordList.add(newWord)
+            if(englishW.isNotEmpty() && turkW.isNotEmpty()) {
+                for (word in wordList){
+                    if (word.englishW.equals(newWord.englishW)){
+                        repeatWord = true
+                        Toast.makeText(requireContext(),"Word is repeating.",Toast.LENGTH_LONG).show()
+                    }
+                }
                 myDisposable.add(wordDao.insert(newWord)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::handleResponse)
-                )
-                println("selam 5")
+                    .subscribe(this::handleResponse))
             }else{
                 Toast.makeText(requireContext(),"Enter Turkish and English word mean.",Toast.LENGTH_LONG).show()
-                println("selam 6")
             }
-            println("selam 7")
             //val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
             //Navigation.findNavController(it).navigate(action)
-            println("selam 8")
-            binding.editTextEnglishWord.text.clear()
-            binding.editTextTurkishWord.text.clear()
+
         }
     }
     private fun handleResponse(){
-        println("selam response")
+        binding.editTextEnglishWord.text.clear()
+        binding.editTextTurkishWord.text.clear()
         val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
         Navigation.findNavController(requireView()).navigate(action)
-        println("güle güle response")
+    }
+    private fun handleResponseWithName(word: Word){
+            Toast.makeText(requireContext(),"Word is added.",Toast.LENGTH_LONG).show()
+
+        binding.editTextEnglishWord.text.clear()
+        binding.editTextTurkishWord.text.clear()
     }
     override fun onDestroyView() {
         super.onDestroyView()

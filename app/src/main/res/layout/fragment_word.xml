@@ -33,56 +33,45 @@
 
     <TextView
         android:id="@+id/textviewWord"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="396dp"
+        android:layout_height="392dp"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:text="Burda bir word olacak"
         android:textSize="25sp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/lineeer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonGo" />
 
-    <LinearLayout
-        android:id="@+id/lineeer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="1dp"
+        android:backgroundTint="#00BCD4"
+        android:text="back"
+        android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewWord"
-        tools:context=".view.WordFragment">
+        app:layout_constraintTop_toBottomOf="@+id/textviewWord" />
 
-        <Button
-            android:id="@+id/buttonBack"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="1dp"
-            android:backgroundTint="#00BCD4"
-            android:text="back"
-            android:textSize="21sp" />
-
-        <Button
-            android:id="@+id/buttonNext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="1dp"
-            android:backgroundTint="#00BCD4"
-            android:text="next"
-            android:textSize="21sp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="1dp"
+        android:backgroundTint="#00BCD4"
+        android:text="next"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewWord" />
 
     <Button
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="4dp"
         android:backgroundTint="#00BCD4"
         android:foregroundGravity="left"
         android:gravity="center"
@@ -91,8 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineeer" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonForAddGo"
@@ -104,10 +92,10 @@
         android:gravity="center"
         android:text="add"
         android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineeer" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
