@@ -66,6 +66,7 @@ class AdderFragment : Fragment() {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(this::handleResponse))
+                    Toast.makeText(requireContext(),"Word is added.",Toast.LENGTH_LONG).show()
                 }
 
             }else{
@@ -73,7 +74,6 @@ class AdderFragment : Fragment() {
             }
             //val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
             //Navigation.findNavController(it).navigate(action)
-
         }
     }
     private fun getirbiMutluluk() {
@@ -92,11 +92,6 @@ class AdderFragment : Fragment() {
         Navigation.findNavController(requireView()).navigate(action)
 //        var action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
 //        Navigation.findNavController(requireView()).navigate(action)
-        binding.editTextEnglishWord.text.clear()
-        binding.editTextTurkishWord.text.clear()
-    }
-    private fun handleResponseWithName(word: Word){
-            Toast.makeText(requireContext(),"Word is added.",Toast.LENGTH_LONG).show()
         binding.editTextEnglishWord.text.clear()
         binding.editTextTurkishWord.text.clear()
     }
