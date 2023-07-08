@@ -47,14 +47,14 @@ class AdderFragment : Fragment() {
         getirbiMutluluk()
 
         binding.buttonAddWord.setOnClickListener {
-            val englishW = binding.editTextEnglishWord.text.toString()
-            val turkW = binding.editTextTurkishWord.text.toString()
+            val englishW = binding.editTextEnglishWord.text.toString().trim()
+            val turkW = binding.editTextTurkishWord.text.toString().trim()
             val newWord = Word(englishW, turkW)
             repeatWord= false
             if(englishW.isNotEmpty() && turkW.isNotEmpty()) {
                 for (word in wordList){
                     println("selamünaleyküm")
-                    if (word.englishW == newWord.englishW){
+                    if (word.englishW.trim().lowercase() == newWord.englishW.trim().lowercase()){
                         repeatWord = true
                         //wordList.remove(newWord)
                         Toast.makeText(requireContext(),"Word is repeating.",Toast.LENGTH_LONG).show()
@@ -86,8 +86,8 @@ class AdderFragment : Fragment() {
         wordList = wordlisttt as ArrayList<Word>
     }
     private fun handleResponse(){
-        var englishW :String = binding.editTextEnglishWord.text.toString()
-        var turkW: String = binding.editTextTurkishWord.text.toString()
+        var englishW :String = binding.editTextEnglishWord.text.toString().trim()
+        var turkW: String = binding.editTextTurkishWord.text.toString().trim()
         var action : NavDirections = AdderFragmentDirections.actionAdderFragmentToWordFragment(englishW,turkW)
         Navigation.findNavController(requireView()).navigate(action)
 //        var action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
