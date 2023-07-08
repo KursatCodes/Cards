@@ -61,23 +61,15 @@ class WordFragment : Fragment() {
             wordList.add(newWord)
         }
         binding.buttonNext.setOnClickListener {
-            println("selam 1")
-                println("selam 2")
             if(wordListFromDB.isNotEmpty()){
                 if(showingWordId+1<wordListFromDB.size){
-                    println("selam 3")
                     showingWordId+=1
-                    println("selam 4")
                     println(showingWordId.toString())
                     var showThis =(showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
-                    println("selam 5")
                     binding.textviewWord.text = showThis
-                    println("selam 6")
                 }else{
-                    println("selam 7")
                     showingWordId=0
                     var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
-                    println("selam 8")
                     binding.textviewWord.text = showThis
                 }
             }
@@ -110,12 +102,13 @@ class WordFragment : Fragment() {
         binding.buttonGo.setOnClickListener {
             if (wordListFromDB.isNotEmpty()){
                 if (binding.textviewList.text.isNotEmpty()){
-                    var goId=binding.textviewList.text.toString().toInt()
-                    if (goId < wordListFromDB.size && goId>0){
-                        var showThis = (goId).toString() + "- "+ wordListFromDB[goId-1].englishW
+                    showingWordId = binding.textviewList.text.toString().toInt()-1
+                    if (showingWordId < wordListFromDB.size && showingWordId>=0){
+                        var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[showingWordId].englishW
                         binding.textviewWord.text = showThis
                         binding.textviewList.text.clear()
                     }else{
+                        showingWordId = wordListFromDB.size-1
                         var showThis = (wordListFromDB.size).toString() + "- "+ wordListFromDB[wordListFromDB.size-1].englishW
                         binding.textviewWord.text = showThis
                         binding.textviewList.text.clear()
