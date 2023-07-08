@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.room.Room
-import com.muhammedkursatgokgun.cards.R
-import com.muhammedkursatgokgun.cards.databinding.FragmentEnterBinding
 import com.muhammedkursatgokgun.cards.databinding.FragmentWordBinding
 import com.muhammedkursatgokgun.cards.model.Word
 import com.muhammedkursatgokgun.cards.roomdb.WordDao
@@ -23,7 +21,8 @@ private lateinit var wordDao : WordDao
 
 
 private var _binding: FragmentWordBinding? = null
-private var showingWordId :Int =0
+private var showingWordId :Int = 0
+private var wordList = ArrayList<Word>()
 
 // This property is only valid between onCreateView and
 // onDestroyView.
@@ -55,6 +54,12 @@ class WordFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleResponse)
         )
+        arguments?.let {
+            var engWFromAdder = WordFragmentArgs.fromBundle(it).newWordEnglish
+            var trWFromAdder = WordFragmentArgs.fromBundle(it).newWordTurkish
+            var newWord = Word(engWFromAdder,trWFromAdder)
+            wordList.add(newWord)
+        }
         binding.buttonNext.setOnClickListener {
             println("selam 1")
                 println("selam 2")
@@ -142,6 +147,7 @@ class WordFragment : Fragment() {
     private fun handleResponse(wordList: List<Word>){
         wordListFromDB = wordList
         if(wordListFromDB.isNotEmpty()){
+            showingWordId = 0
             var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
                 binding.textviewWord.text = showThis
         }else{

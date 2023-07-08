@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.muhammedkursatgokgun.cards.R
 import com.muhammedkursatgokgun.cards.databinding.FragmentEnterBinding
 
 private var _binding: FragmentEnterBinding? = null
@@ -32,7 +31,8 @@ class EnterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonWork.setOnClickListener {
-            val action = EnterFragmentDirections.actionEnterFragmentToWordFragment()
+            val action =
+                EnterFragmentDirections.actionEnterFragmentToWordFragment("","")
             Navigation.findNavController(it).navigate(action)
         }
         binding.buttonAdd.setOnClickListener {

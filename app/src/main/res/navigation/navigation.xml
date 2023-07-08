@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_wordFragment_to_adderFragment"
             app:destination="@id/adderFragment" />
+        <argument
+            android:name="newWordEnglish"
+            app:argType="string" />
+        <argument
+            android:name="newWordTurkish"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/adderFragment"
