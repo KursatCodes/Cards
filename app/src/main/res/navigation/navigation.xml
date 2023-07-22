@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_enterFragment_to_adderFragment"
             app:destination="@id/adderFragment" />
+        <action
+            android:id="@+id/action_enterFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/wordFragment"
@@ -44,4 +47,9 @@
             android:id="@+id/action_adderFragment_to_enterFragment"
             app:destination="@id/enterFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.muhammedkursatgokgun.cards.view.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
 </navigation>
