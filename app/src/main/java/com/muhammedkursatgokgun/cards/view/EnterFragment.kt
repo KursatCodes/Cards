@@ -34,8 +34,12 @@ class EnterFragment : Fragment() {
                 EnterFragmentDirections.actionEnterFragmentToWordFragment("","")
             Navigation.findNavController(it).navigate(action)
         }
-        binding.buttonAdd.setOnClickListener {
+        binding.buttonAdd2.setOnClickListener {
             val action = EnterFragmentDirections.actionEnterFragmentToAdderFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+        binding.buttonGoToList.setOnClickListener {
+            val action = EnterFragmentDirections.actionEnterFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
