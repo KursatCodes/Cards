@@ -134,6 +134,10 @@ class WordFragment : Fragment() {
             var action = WordFragmentDirections.actionWordFragmentToEnterFragment()
             Navigation.findNavController(it).navigate(action)
         }
+        binding.listeyeGit.setOnClickListener {
+            var action = WordFragmentDirections.actionWordFragmentToListFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
     private fun handleResponseForDelete() {
         myDisposable.add(wordDao.getAll()

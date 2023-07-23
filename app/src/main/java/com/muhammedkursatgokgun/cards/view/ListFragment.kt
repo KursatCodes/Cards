@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -32,13 +35,7 @@ class ListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         db = Room.databaseBuilder(requireContext(),WordDb::class.java,"Word").build()
         myDao = db.wordDao()
-
-
-
-
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,6 +54,10 @@ class ListFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleResponse)
         )
+        binding.tekrarEt.setOnClickListener {
+            var action= ListFragmentDirections.actionListFragmentToEnterFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
     private fun handleResponse(wordList : List<Word>){
         binding.recyclerViewList.layoutManager = LinearLayoutManager(requireContext())
