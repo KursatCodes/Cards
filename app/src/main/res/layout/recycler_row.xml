@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="41dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="5dp">
 
     <TextView
         android:id="@+id/englishWord"
@@ -14,17 +15,29 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:text="selam"
-        android:textSize="27sp"
+        android:textSize="23sp"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="5dp" />
 
     <TextView
         android:id="@+id/turkishWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:gravity="center"
         android:text="selam"
-        android:textSize="27sp"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="0dp" />
 

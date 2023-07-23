@@ -15,18 +15,18 @@
         android:layout_height="53dp"
         android:layout_margin="10dp"
         android:backgroundTint="#00BCD4"
-        android:text="Go"
+        android:text="Git"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/textviewList"
-        android:layout_width="130dp"
+        android:layout_width="wrap_content"
         android:layout_height="49dp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="List"
+        android:hint="Kelimeye git"
         android:textSize="25sp"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
     <TextView
         android:id="@+id/textviewWord"
         android:layout_width="396dp"
-        android:layout_height="392dp"
+        android:layout_height="380dp"
         android:layout_margin="10dp"
         android:gravity="center"
         android:text="Burda bir word olacak"
@@ -51,7 +51,7 @@
         android:layout_gravity="bottom"
         android:layout_margin="1dp"
         android:backgroundTint="#00BCD4"
-        android:text="back"
+        android:text="geri"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviewWord" />
@@ -63,7 +63,7 @@
         android:layout_gravity="bottom"
         android:layout_margin="1dp"
         android:backgroundTint="#00BCD4"
-        android:text="next"
+        android:text="ileri"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviewWord" />
@@ -76,13 +76,40 @@
         android:backgroundTint="#00BCD4"
         android:foregroundGravity="left"
         android:gravity="center"
-        android:text="delete"
+        android:text="sil"
         android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/basaDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:backgroundTint="#00BCD4"
+        android:foregroundGravity="left"
+        android:gravity="center"
+        android:text="başa dön"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewWord" />
+
+    <Button
+        android:id="@+id/listeyeGit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
+        android:foregroundGravity="left"
+        android:gravity="center"
+        android:text="Lİsteye git"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basaDon" />
     <Button
         android:id="@+id/buttonForAddGo"
         android:layout_width="wrap_content"
@@ -91,7 +118,7 @@
         android:backgroundTint="#00BCD4"
         android:foregroundGravity="right"
         android:gravity="center"
-        android:text="add"
+        android:text="ekle"
         android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

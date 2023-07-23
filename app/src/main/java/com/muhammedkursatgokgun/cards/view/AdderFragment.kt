@@ -53,11 +53,10 @@ class AdderFragment : Fragment() {
             repeatWord= false
             if(englishW.isNotEmpty() && turkW.isNotEmpty()) {
                 for (word in wordList){
-                    println("selamünaleyküm")
                     if (word.englishW.trim().lowercase() == newWord.englishW.trim().lowercase()){
                         repeatWord = true
                         //wordList.remove(newWord)
-                        Toast.makeText(requireContext(),"Word is repeating.",Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(),"Aynı kelime var.",Toast.LENGTH_LONG).show()
                     }
                 }
                 if(!repeatWord){
@@ -66,11 +65,11 @@ class AdderFragment : Fragment() {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(this::handleResponse))
-                    Toast.makeText(requireContext(),"Word is added.",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Kelime eklendi.",Toast.LENGTH_LONG).show()
                 }
 
             }else{
-                Toast.makeText(requireContext(),"Enter Turkish and English word mean.",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Türkçe kelime ve yabancı karşılığını yazınız.",Toast.LENGTH_LONG).show()
             }
             //val action = AdderFragmentDirections.actionAdderFragmentToWordFragment()
             //Navigation.findNavController(it).navigate(action)

@@ -130,6 +130,10 @@ class WordFragment : Fragment() {
                 binding.textviewWord.text = showThis
             }
         }
+        binding.basaDon.setOnClickListener {
+            var action = WordFragmentDirections.actionWordFragmentToEnterFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
     private fun handleResponseForDelete() {
         myDisposable.add(wordDao.getAll()
@@ -144,9 +148,10 @@ class WordFragment : Fragment() {
             var showThis = (showingWordId+1).toString() + "- "+ wordListFromDB[0].englishW
                 binding.textviewWord.text = showThis
         }else{
-            binding.textviewWord.text = "Blank List."
+            binding.textviewWord.text = "Boş Liste"
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
