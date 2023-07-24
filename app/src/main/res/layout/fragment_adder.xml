@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:backgroundTint="#00BCD4"
-        android:text="kelime ekle"
+        android:text="Kelime Ekle"
         android:textSize="25sp" />
     <TextView
         android:id="@+id/textviewCase"
