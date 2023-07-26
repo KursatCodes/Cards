@@ -35,9 +35,10 @@ private lateinit var myWordList : List<Word>
 private var myDisposable = CompositeDisposable()
 private var _binding: FragmentListBinding? = null
 private val binding get() = _binding!!
-lateinit var mAdView : AdView
+
 
 class ListFragment : Fragment() {
+    lateinit var mAdView : AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Room.databaseBuilder(requireContext(),WordDb::class.java,"Word").build()

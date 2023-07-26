@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/textviewWord"
         android:layout_width="396dp"
-        android:layout_height="380dp"
+        android:layout_height="310dp"
         android:layout_margin="13dp"
         android:gravity="center"
         android:textSize="25sp"
@@ -48,9 +48,7 @@
         android:id="@+id/buttonBack"
         android:layout_width="171dp"
         android:layout_height="51dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="13dp"
-        android:backgroundTint="#00BCD4"
+        android:layout_margin="10dp"
         android:text="Geri"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +59,7 @@
         android:layout_width="171dp"
         android:layout_height="51dp"
         android:layout_gravity="bottom"
-        android:layout_margin="13dp"
-        android:backgroundTint="#00BCD4"
+        android:layout_margin="10dp"
         android:text="İleri"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,63 +67,64 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_margin="13dp"
         android:layout_marginLeft="10dp"
-        android:backgroundTint="#00BCD4"
+        android:layout_marginTop="8dp"
         android:foregroundGravity="left"
         android:gravity="center"
-        android:layout_margin="13dp"
         android:text="Sil"
         android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listeyeGit" />
 
     <Button
         android:id="@+id/basaDon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00BCD4"
-        android:foregroundGravity="left"
-        android:gravity="center"
-        android:layout_marginTop="13dp"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_margin="10dp"
         android:text="Başa Dön"
         android:textSize="21sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
 
     <Button
         android:id="@+id/listeyeGit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#00BCD4"
-        android:foregroundGravity="left"
-        android:gravity="center"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_margin="10dp"
         android:text="Listeye Git"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/basaDon" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonNext" />
+
     <Button
         android:id="@+id/buttonForAddGo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_margin="13dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="#00BCD4"
         android:foregroundGravity="right"
         android:gravity="center"
-        android:layout_margin="13dp"
         android:text="Ekle"
         android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listeyeGit" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5968740567269412/1051864501"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.room.Room
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+import com.muhammedkursatgokgun.cards.R
 import com.muhammedkursatgokgun.cards.databinding.FragmentWordBinding
 import com.muhammedkursatgokgun.cards.model.Word
 import com.muhammedkursatgokgun.cards.roomdb.WordDao
@@ -23,7 +27,7 @@ private lateinit var wordDao : WordDao
 private var _binding: FragmentWordBinding? = null
 private var showingWordId :Int = 0
 private var wordList = ArrayList<Word>()
-
+private lateinit var mAdView : AdView
 // This property is only valid between onCreateView and
 // onDestroyView.
 private val binding get() = _binding!!
@@ -54,6 +58,14 @@ class WordFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::handleResponse)
         )
+
+        //Ad ID --- ca-app-pub-5968740567269412/1051864501
+        MobileAds.initialize(requireContext()) {}
+
+        mAdView = view.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
         arguments?.let {
             var engWFromAdder = WordFragmentArgs.fromBundle(it).newWordEnglish
             var trWFromAdder = WordFragmentArgs.fromBundle(it).newWordTurkish
